@@ -4,11 +4,24 @@ let numGuessed = document.querySelector("#nGuessed");
 let guessesRemaining = document.querySelector("#guessesRemaining");
 let button = document.getElementById("btn")
 let randomNumber = Math.round(Math.random()*100 +1);
+let startAgain = document.querySelector("h1");
+startAgain.onclick = function(){
+    startOver();
+}
+
 button.onclick = function(){  startGame();  }
 
-let count = 0;
+let count = "";
 let guesses = 10;
 let play = true;
+button.disabled = true;
+
+input.onkeyup = function(){
+button.disabled= false;
+if(input.value.length ===0){
+    button.disabled = true;
+}
+}
 
 if(play){
     function startGame(){
@@ -24,25 +37,43 @@ if(play){
 
 function validateGame(){
     console.log(randomNumber)
-    if(input.value > randomNumber){
+    if(isNaN(input.value)){
+      alert("Write a valid number")
+    }
+   if(input.value > randomNumber){
         range.innerHTML = "Number is too High!"
     }
     else if(input.value < randomNumber){
-        range.innerHTML = "Number is too low!"
+        range.innerHTML = "Number is too Low!"
     }
     else if(input.value == randomNumber){
-        range.innerHTML = "You guessed it right!"
+        range.innerHTML = "You guessed it Right!"
+        endGame()
+        document.querySelectorAll("p")[1].innerHTML = `<h3>you guessed it in ${11-guesses} chances</h3>`
+
     }
+
+    score();
 }
 
 function score(){
-    //
+    count += `${input.value}|`
+    console.log(count)
+    numGuessed.innerHTML = count
+    if(guesses==0){
+        endGame()
+    }
 }
 
 function endGame(){
-    play = false;
+   button.classList.add("endGame")
+   startAgain.style.display = 'block';
+
 }
 
 function startOver(){
-    //
+ play = true;
+ guesses = 0;
+ count = ""
+ startGame()
 }

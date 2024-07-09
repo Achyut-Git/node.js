@@ -6,6 +6,8 @@
     <title>Guess The Number</title>
     <style>
         body{
+            margin: 0;
+            padding: 0;
             height: 100vh;
             width: 100%;
             position: relative;
@@ -18,32 +20,39 @@
            transform: translate(-50%, -50%);
            background: #313131;
            color: #fff;
-           padding: 40px;
+           padding: 60px;
         }
         input{
             padding: 10px;
             border-radius: 20px;
             text-align: center;
+            width: 90%;
         }
-        #btn{
+         #btn{
             width: 100%;
-
-        }
+         }
         #btn:hover{
             cursor: pointer;
             transform: scale(1.025);
         }
+        h2{
+        width: 100%;
+        text-align: center;
+        }
         .endGame{
             display: none;
+            width: 100%;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="gameContainer">
         <input type="text" id="input" placeholder="Enter the number" autofocus>
-        <h2 id="range">Number is too high!</h2>
+        <h2 id="range"></h2>
          <p>Numbers Guessed <span id="nGuessed">0</span></p>
          <p>Guesses Remaining <span id="guessesRemaining">10</span></p>
+         <h1 class="endGame">Start Over</h1>
         <input type="button" value="Guess" id="btn">
     </div>
 </body>
