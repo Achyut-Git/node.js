@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        body{
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            background: #000;
+        }
+        .gameContainer{
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+           background: #313131;
+           color: #fff;
+           padding: 40px;
+        }
+        input{
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        #btn{
+            width: 100%;
+
+        }
+        #btn:hover{
+            cursor: pointer;
+            transform: scale(1.025);
+        }
+        .endGame{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="gameContainer">
+        <input type="text" id="input" placeholder="Enter the number" autofocus>
+        <h2 id="range">Number is too high!</h2>
+         <p>Numbers Guessed <span id="nGuessed">0</span></p>
+         <p>Guesses Remaining <span id="guessesRemaining">10</span></p>
+        <input type="button" value="Guess" id="btn">
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
